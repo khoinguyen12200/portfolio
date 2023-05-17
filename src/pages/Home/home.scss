@@ -1,0 +1,107 @@
+//font define
+
+@font-face {
+  font-family: 'Miedinger-Bold';
+  src: url('../../assets/fonts/Miedinger-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+.HomePageWrapper {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+$timeAnimationScroll: 1.5s;
+$timeDelayScroll: 1s;
+$delayTimeToStartAfterScroll: 1.2s;
+.HomePage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  transition: top $timeAnimationScroll cubic-bezier(.79,.12,.86,.74);
+
+  .Greeting {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+
+    .textSpace > * {
+      transition: all 0.5s ease-in-out;
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          transition-delay: $delayTimeToStartAfterScroll + 0.2s * $i;
+        }
+      }
+    }
+
+    .avatar {
+      transition: all 0.5s ease-in-out;
+      transition-delay: $delayTimeToStartAfterScroll + 0.5s;
+    }
+
+    &.deActive {
+      .avatar {
+        transform: translateY(-40px);
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+      }
+
+      .textSpace {
+        & > * {
+          transition: all 0.5s ease-in-out;
+          transform: translateY(-40px);
+          opacity: 0;
+          @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+              transition-delay: 0.2s * $i;
+            }
+          }
+        }
+      }
+    }
+
+    .avatarSpace {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+      max-width: 50%;
+
+      .avatar {
+        height: 400px;
+      }
+
+      .textSpace {
+        .name {
+          font-size: 2em;
+          font-family: 'Miedinger-Bold';
+        }
+
+        .title {
+          font-family: 'Montserrat';
+        }
+
+        .desc {
+          width: 500px;
+          font-size: 1.2em;
+          font-family: 'Montserrat';
+        }
+      }
+    }
+
+  }
+
+  .SkillList {
+    background: #303036;
+    min-height: 100vh;
+  }
+}

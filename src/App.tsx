@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from "./pages/Home";
 import './App.css';
+import scrollDetector from 'scroll-detector';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home/>
     </div>
   );
 }
 
 export default App;
+
+var scrollableElement = document.body; //document.getElementById('scrollableElement');
+
+scrollableElement.addEventListener('wheel', checkScrollDirection);
+
+function checkScrollDirection(event) {
+    if (checkScrollDirectionIsUp(event)) {
+        // console.log('UP');
+    } else {
+        // console.log('Down');
+    }
+}
+
+function checkScrollDirectionIsUp(event) {
+    if (event.wheelDelta) {
+        return event.wheelDelta > 0;
+    }
+    return event.deltaY < 0;
+}
+
+let startY;
+
+window.addEventListener('touchstart', (event) => {
+    startY = event.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', (event) => {
+    const currentY = event.touches[0].clientY;
+    const deltaY = currentY - startY;
+
+    if (deltaY > 0) {
+        // User is moving down
+        // console.log('MOBILE Down');
+    } else {
+        // User is moving up
+        // console.log('MOBILE Up');
+    }
+});
