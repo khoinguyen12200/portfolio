@@ -4,13 +4,15 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface homeSliderInterface {
     activeSlide: string,
     isLoading: boolean,
-    deActiveSlide: string
+    deActiveSlide: string,
+    blackHoleMode: boolean
 }
 
 const initialState: homeSliderInterface = {
     activeSlide: '',
     isLoading: false,
-    deActiveSlide: ''
+    deActiveSlide: '',
+    blackHoleMode: true
 };
 
 export const homeSliderSlice = createSlice({
@@ -25,9 +27,12 @@ export const homeSliderSlice = createSlice({
         },
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;
+        },
+        setBlackHoleMode: (state, action: PayloadAction<boolean>) => {
+            state.blackHoleMode = action.payload;
         }
     },
 });
 
-export const { setActiveSlide, setDeActiveSlide, setLoading } = homeSliderSlice.actions;
+export const { setActiveSlide, setDeActiveSlide, setLoading, setBlackHoleMode } = homeSliderSlice.actions;
 export default homeSliderSlice.reducer;

@@ -4,11 +4,14 @@ import SkillList, {SKILL_LIST_ID} from "./SkillList";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import useScrollDirection, {ScrollDirectionInterface} from "../../hooks/useScrollDirection";
 import {setActiveSlide, setDeActiveSlide, setLoading} from "../../redux/homeSliderSlice";
+import Contact, {CONTACT_ID} from "./Contact";
 
 
+const FRIST_SLIDE_ID = GREETING_ID;
 const SLIDES = [
     GREETING_ID,
-    SKILL_LIST_ID
+    SKILL_LIST_ID,
+    CONTACT_ID
 ];
 export default function Home() {
     const {activeSlide, deActiveSlide, isLoading} = useAppSelector(state => state.homeSlider);
@@ -63,7 +66,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-        dispatch(setActiveSlide(SLIDES[0]));
+        dispatch(setActiveSlide(FRIST_SLIDE_ID));
         dispatch(setLoading(false));
         setScrollDirection(ScrollDirectionInterface.SCROLL_NONE);
     }, [])
@@ -79,6 +82,7 @@ export default function Home() {
             <div style={{top: topActiveSlide}} id={"HomePageId"} className={"HomePage"}>
                 <Greeting/>
                 <SkillList/>
+                <Contact/>
             </div>
         </div>
     )

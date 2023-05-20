@@ -19,9 +19,9 @@ export default function Greeting() {
                     </p>
                     <h4 className={"desc"}>
                         Hi there, I'm Khoi - 23 years old. <br/>
-                        I develop scalable back-end,<br/>
-                        design fancy front-end <br/>
-                        and play League of Legends.
+                        I build scalable back-end,<br/>
+                        Design fancy front-end <br/>
+                        And play League of Legends.
                     </h4>
                 </div>
             </div>
