@@ -106,7 +106,7 @@ function BackgroundImage({step, menuIconRef}:{step: number, menuIconRef: any}) {
                     left,
                     width,
                     height,
-                    scale: 1.3,
+                    scale: 1.9,
                 };
             }
             if (step === 2) {
@@ -118,7 +118,7 @@ function BackgroundImage({step, menuIconRef}:{step: number, menuIconRef: any}) {
                     y: '-50%',
                     width,
                     height,
-                    scale: 1.3,
+                    scale: 1.9,
                 };
             }
             if (step === 3) {
@@ -147,10 +147,15 @@ function BackgroundImage({step, menuIconRef}:{step: number, menuIconRef: any}) {
 
     return(
         <>
-            <motion.img
+            <motion.div
                 animate={backgroundAnimation}
                 transition={{type: 'spring', damping: 18, stiffness: 80, delay: delayTime}}
-                className={"MenuBackground"} src={MenuBackground} alt={"Menu Background"}/>
+                className={"MenuBackground"}
+            >
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#212529" d="M60.2,-45.8C76.3,-27.9,86.3,-3,81.6,19C76.9,40.9,57.4,59.9,35.4,68.6C13.4,77.4,-11.2,75.9,-32.1,66.1C-52.9,56.2,-69.9,38,-76.7,15.4C-83.6,-7.2,-80.1,-34.2,-65.6,-51.7C-51.1,-69.2,-25.6,-77.2,-1.7,-75.8C22.1,-74.4,44.2,-63.6,60.2,-45.8Z" transform="translate(100 100)" />
+                </svg>
+            </motion.div>
         </>
     )
 }
