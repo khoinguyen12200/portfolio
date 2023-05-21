@@ -1,0 +1,30 @@
+$points: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px
+);
+
+@mixin media-up($breakpoint) {
+  @media (min-width: map-get($points, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin media-down($breakpoint) {
+  @media (max-width: map-get($points, $breakpoint) - 1px) {
+    @content;
+  }
+}
+
+@font-face {
+  font-family: 'Miedinger-Bold';
+  src: url('assets/fonts/Miedinger-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}

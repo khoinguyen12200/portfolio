@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../redux/store";
 import useScrollDirection, {ScrollDirectionInterface} from "../../hooks/useScrollDirection";
 import {setActiveSlide, setDeActiveSlide, setLoading} from "../../redux/homeSliderSlice";
 import Contact, {CONTACT_ID} from "./Contact";
+import Menu from "./Menu";
 
 
 const FRIST_SLIDE_ID = GREETING_ID;
@@ -80,6 +81,7 @@ export default function Home() {
     return (
         <div className={"HomePageWrapper"}>
             <div style={{top: topActiveSlide}} id={"HomePageId"} className={"HomePage"}>
+                <Menu/>
                 <Greeting/>
                 <SkillList/>
                 <Contact/>

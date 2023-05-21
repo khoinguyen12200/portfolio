@@ -1,5 +1,5 @@
 import {AiOutlineLinkedin, AiOutlineMail, AiOutlinePhone} from "react-icons/ai";
-import {BsLinkedin} from "react-icons/bs";
+import {BsEnvelope, BsLinkedin, BsTelephone} from "react-icons/bs";
 import useStateSlide from "../../hooks/useStateSlide";
 import {SKILL_LIST_ID} from "./SkillList";
 
@@ -19,7 +19,9 @@ export default function Contact() {
             </div>
             <div className={"ContactList"}>
                 <div className={"ContactItem"}>
-                    <AiOutlineMail/>
+                    <div className={"ContactIcon"}>
+                        <BsEnvelope/>
+                    </div>
                     <div className={"ContactInfo"}>
                         <a href="mailto:khoi.nguyen12200@gmail.com">
                             khoi.nguyen12200@gmail.com
@@ -27,7 +29,9 @@ export default function Contact() {
                     </div>
                 </div>
                 <div className={"ContactItem"}>
-                    <AiOutlinePhone/>
+                    <div className={"ContactIcon"}>
+                        <BsTelephone/>
+                    </div>
                     <div className={"ContactInfo"}>
                         <a href={"tel:096 459 960"}>
                             +84 966 459 960 ( Telegram, Zalo )
@@ -35,7 +39,9 @@ export default function Contact() {
                     </div>
                 </div>
                 <div className={"ContactItem"}>
-                    <BsLinkedin/>
+                    <div className={"ContactIcon"}>
+                        <BsLinkedin/>
+                    </div>
                     <div className={"ContactInfo"}>
                         <a href={"https://www.linkedin.com/in/khoi-g-nguyen/"}>
                             khoi-g-nguyen

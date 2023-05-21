@@ -21,6 +21,7 @@ import {useEffect, useRef, useState} from "react";
 import {motion} from "framer-motion";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {setBlackHoleMode} from "../../redux/homeSliderSlice";
+import useIsMobile from "../../hooks/useIsMobile";
 
 interface SkillItem {
     name: string;
@@ -167,7 +168,7 @@ function BlackHole() {
     const blackHoleMode = useAppSelector(state => state.homeSlider.blackHoleMode);
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            //black hole center of mouse, get mouse position and blackhole width height
+            if(ref.current === null) return;
             const {x, y, width, height} = ref.current.getBoundingClientRect();
             const mousePos = {
                 x: e.clientX,
@@ -186,17 +187,28 @@ function BlackHole() {
     }, [])
 
     return (
-        <div>
-            <motion.img
-                ref={ref}
-                animate={
-                    blackHoleMode && isActive
-                        ? {left: blackPos.x, top: blackPos.y, scale: 1, opacity: 1}
-                        : {scale: 0, opacity: 0}
+        <motion.div
+            className={"BlackHoleContainer"}
+            ref={ref}
+            animate={
+                blackHoleMode ? {
+                    left: blackPos.x,
+                    top: blackPos.y,
+                    scale: 1,
+                } : {
+                    left: blackPos.x,
+                    top: blackPos.y,
+                    scale: 0.4,
                 }
-                transition={{ease: "linear", duration: 0.01}}
-                className={"BlackHole"} src={blackHoleIcon} alt=""/>
-        </div>
+            }
+            transition={{duration: 0.0001}}
+        >
+            {
+                isActive && (
+                    <img className={"BlackHole"} src={blackHoleIcon} alt=""/>
+                )
+            }
+        </motion.div>
     )
 }
 
@@ -223,7 +235,7 @@ const Effects: EffectRangeInterface[] = [
     }
     ,
     {
-        range: 300,
+        range: 250,
         moveRange: 10,
     }
 ]
@@ -242,6 +254,7 @@ function SkillItem({name, icon, isActive, index}: SkillItem & {
     const [isFinishFirst, setIsFinishFirst] = useState(false);
     const delayTime = isFinishFirst ? 0 : 1.2 + (0.075 * index);
 
+    const [isMobile] = useIsMobile();
 
     useEffect(() => {
         if (isActive) {
@@ -260,7 +273,10 @@ function SkillItem({name, icon, isActive, index}: SkillItem & {
             const {clientX, clientY} = e;
 
             for (let i = 0; i < Effects.length; i++) {
-                const {range, moveRange} = Effects[i];
+                let {range, moveRange} = Effects[i];
+                if (isMobile) {
+                    range = range / 2;
+                }
                 if (clientX >= x - range && clientX <= x + width + range && clientY >= y - range && clientY <= y + height + range) {
                     element.classList.add('active');
                     const {top, left} = element.getBoundingClientRect();
@@ -285,7 +301,7 @@ function SkillItem({name, icon, isActive, index}: SkillItem & {
             window.removeEventListener('mousemove', checkMouseMove);
             window.removeEventListener('mouseout', checkMouseMove);
         }
-    }, [])
+    }, [isMobile])
 
     return (
         <motion.div
