@@ -3,7 +3,7 @@ import Greeting, {GREETING_ID} from "./Greeting";
 import SkillList, {SKILL_LIST_ID} from "./SkillList";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import useScrollDirection, {ScrollDirectionInterface} from "../../hooks/useScrollDirection";
-import {setActiveSlide, setDeActiveSlide, setLoading} from "../../redux/homeSliderSlice";
+import {moveToSlide, setActiveSlide, setDeActiveSlide, setLoading} from "../../redux/homeSliderSlice";
 import Contact, {CONTACT_ID} from "./Contact";
 import Menu from "./Menu";
 
@@ -23,21 +23,22 @@ export default function Home() {
         if (!isLoading && scrollDirection !== ScrollDirectionInterface.SCROLL_NONE) {
             if (isValidToMoveSlide()) {
                 moveToNextSlide();
+                return;
             }
         }
+        setScrollDirection(ScrollDirectionInterface.SCROLL_NONE)
     }, [scrollDirection])
 
     function moveToNextSlide() {
         const nextSlide = getNextSlide();
-        dispatch(setDeActiveSlide(activeSlide));
-        dispatch(setActiveSlide(nextSlide));
-        dispatch(setLoading(true));
-
-        setTimeout(() => {
-            setScrollDirection(ScrollDirectionInterface.SCROLL_NONE)
-            dispatch(setLoading(false));
-        }, 1000);
+        dispatch(moveToSlide(nextSlide));
     }
+
+    useEffect(() => {
+        if(!isLoading) {
+            setScrollDirection(ScrollDirectionInterface.SCROLL_NONE)
+        }
+    }, [isLoading])
 
     function getNextSlide() {
         if (scrollDirection === ScrollDirectionInterface.SCROLL_UP) {

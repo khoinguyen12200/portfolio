@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 
 export interface homeSliderInterface {
@@ -15,6 +15,24 @@ const initialState: homeSliderInterface = {
     blackHoleMode: true
 };
 
+const moveToSlide = createAsyncThunk(
+    'homeSlider/moveToSlide',
+    async (slideId: string, thunkAPI) => {
+        const {dispatch, getState} = thunkAPI as any;
+        const {activeSlide, isLoading} = getState().homeSlider as homeSliderInterface;
+        console.log('moveToSlide', isLoading)
+        if(!isLoading) {
+            dispatch(setDeActiveSlide(activeSlide));
+            dispatch(setActiveSlide(slideId));
+            dispatch(setLoading(true));
+
+            setTimeout(() => {
+                dispatch(setLoading(false));
+            }, 1000);
+        }
+    }
+)
+
 export const homeSliderSlice = createSlice({
     name: 'homeSliderSlice',
     initialState,
@@ -27,12 +45,19 @@ export const homeSliderSlice = createSlice({
         },
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.isLoading = action.payload;
+            console.log("setLoading", action.payload)
         },
         setBlackHoleMode: (state, action: PayloadAction<boolean>) => {
             state.blackHoleMode = action.payload;
         }
     },
+    extraReducers: (builder) => {
+        builder.addCase(moveToSlide.fulfilled, (state, action) => {
+
+        })
+    }
 });
 
-export const { setActiveSlide, setDeActiveSlide, setLoading, setBlackHoleMode } = homeSliderSlice.actions;
+export const {setActiveSlide, setDeActiveSlide, setLoading, setBlackHoleMode} = homeSliderSlice.actions;
+export {moveToSlide};
 export default homeSliderSlice.reducer;

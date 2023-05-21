@@ -6,7 +6,7 @@ import {GREETING_ID} from "./Greeting";
 import {CONTACT_ID} from "./Contact";
 import {SKILL_LIST_ID} from "./SkillList";
 import {useAppDispatch} from "../../redux/store";
-import {setActiveSlide} from "../../redux/homeSliderSlice";
+import {moveToSlide, setActiveSlide} from "../../redux/homeSliderSlice";
 
 export default function Menu() {
     const menuIconRef = useRef<HTMLDivElement>(null);
@@ -75,7 +75,7 @@ function MenuNavigation({step, isOpen, setIsOpen}:{step: number, isOpen: boolean
         setIsOpen(false);
 
         setTimeout(() => {
-            dispatch(setActiveSlide(id));
+            dispatch(moveToSlide(id));
         }, 1000)
     }
     return(
