@@ -355,7 +355,7 @@ $delayTimeToStartAfterScroll: 0.9s;
         @include media-down(lg) {
           width: 100%;
           gap: 1em;
-          padding: 0.5em;
+          padding: 1em;
 
           .SkillListContentItem {
             font-size: 0.8em !important;
