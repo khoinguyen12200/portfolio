@@ -14,9 +14,10 @@ RUN npm install
 COPY . .
 
 RUN npm run build
+RUN npm install -g serve
+
 
 # Expose a port for the Node.js application to listen on
 EXPOSE 3000
 
-# Run the Node.js application
-CMD ["npx", "serve", "-s", "build"]
+CMD [ "serve", "-s", "build" ]
