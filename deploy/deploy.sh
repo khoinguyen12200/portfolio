@@ -28,7 +28,6 @@ zero_downtime_deploy() {
 
   init_things
 
-  replaceEnv
 
   echo "Finish replace env variables, start build new app container"
 
@@ -80,3 +79,4 @@ zero_downtime_deploy() {
 }
 
 zero_downtime_deploy
+
