@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    environment {
+        DEPLOY_DIRECTORY = "./Projects/Portfolio/Deploys"
+        REMOTE_DIRECTORY = "portfolio-${env.BUILD_ID}"
+    }
+    stages {
+        // copy to workspace
+        stage('BUILD AND DEPLOY') {
+            steps {
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'hofi_server', transfers: [
+                sshTransfer(
+                    cleanRemote: false,
+                    excludes: '',
+                    execCommand: "cd ${DEPLOY_DIRECTORY}/${env.REMOTE_DIRECTORY}/deploy && chmod +x deploy.sh && bash ./deploy.sh",
+                    execTimeout: 1000000,
+                    flatten: false,
+                    makeEmptyDirs: false,
+                    noDefaultExcludes: false,
+                    patternSeparator: '[, ]+',
+                    remoteDirectory: "${DEPLOY_DIRECTORY}/${env.REMOTE_DIRECTORY}/",
+                    remoteDirectorySDF: false,
+                    removePrefix: '',
+                    sourceFiles: '**/*'
+                )
+                ], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+            }
+        }
+    }
+
+
+    post {
+        always {
+            echo "Pipeline finished with status: ${currentBuild.result}"
+            echo "Remote directory is set to: ${env.REMOTE_DIRECTORY}"
+        }
+        success {
+            echo "Pipeline succeeded!"
+        }
+        failure {
+            echo "Pipeline failed!"
+        }
+    }
+}
