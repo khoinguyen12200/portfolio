@@ -4,7 +4,7 @@ services:
   prod_portfolio_app:
     build:
       context: ../
-      dockerfile: Dockerfile
+      dockerfile: deploy/Dockerfile
     ports:
       - 3000:3000
     volumes:
