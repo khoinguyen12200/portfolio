@@ -7,3 +7,9 @@ services:
       dockerfile: deploy/Dockerfile
     volumes:
       - ../:/app
+    networks:
+      - hofi_network
+
+networks:
+  hofi_network:
+    external: true
