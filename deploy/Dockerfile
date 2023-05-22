@@ -13,8 +13,9 @@ RUN npm install
 # Copy the rest of the application code to the container
 COPY . .
 
+RUN npm install -g serve@10.1.1
+
 RUN npm run build
-RUN npm install -g serve
 
 
 # Expose a port for the Node.js application to listen on
