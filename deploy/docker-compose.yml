@@ -6,7 +6,7 @@ services:
       context: ../
       dockerfile: deploy/Dockerfile
     volumes:
-      - ../:/app
+      - ./:/app
     ports:
       - "3000:3000"
     networks:
