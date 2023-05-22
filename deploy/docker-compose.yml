@@ -3,10 +3,10 @@ version: '3'
 services:
   prod_portfolio_app:
     build:
-      context: ../
-      dockerfile: deploy/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ./:/app
+      - ../:/app
     ports:
       - "3000:3000"
     networks:
