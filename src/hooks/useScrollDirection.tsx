@@ -39,16 +39,14 @@ export default function useScrollDirection() : [
         function touchMoveEvent(event) {
             const currentY = event.touches[0].clientY;
             const deltaY = currentY - startY;
-
             if (deltaY > 0) {
-                setScrollDirection(ScrollDirectionInterface.SCROLL_DOWN)
+                setScrollDirection(ScrollDirectionInterface.SCROLL_UP);
             } else {
-
+                setScrollDirection(ScrollDirectionInterface.SCROLL_DOWN);
             }
-            window.addEventListener('touchstart', touchStartEvent);
-            window.addEventListener('touchmove', touchMoveEvent);
         }
-
+        window.addEventListener('touchstart', touchStartEvent);
+        window.addEventListener('touchmove', touchMoveEvent);
         return () => {
             scrollableElement.removeEventListener('wheel', checkScrollDirection);
             window.removeEventListener('touchstart', touchStartEvent);
