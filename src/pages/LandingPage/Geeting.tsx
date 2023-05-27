@@ -37,6 +37,7 @@ export default function Greeting() {
                 transition={{duration: 2}}
                 style={{y: y3}} src={bg4} alt={"bg4"} className={"parallaxbg"}/>
             <motion.div
+                style={{y: y1}}
                 className={"greetingText "}>
                 <motion.div
                     className={"textContainer"}>
