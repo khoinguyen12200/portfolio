@@ -7,9 +7,11 @@ import {useEffect, useRef, useState} from "react";
 import useParallax from "../../hooks/useParallax";
 import {motion, MotionValue, useScroll, useTransform} from "framer-motion";
 import useLandingScroll from "../../hooks/useLandingScroll";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Greeting() {
     const ref = useRef(null);
+    const [isMobile] = useIsMobile();
     const scrollYProgress = useLandingScroll({ target: ref });
     const [refHeight, setRefHeight] = useState(0);
     useEffect(() => {
@@ -26,8 +28,8 @@ export default function Greeting() {
     return(
         <div ref={ref} className={"GreetingPage"}>
             <motion.img src={bg1} alt={"bg1"} className={"parallaxbg"}/>
-            <motion.img style={{y: y1}} src={bg2} alt={"bg2"} className={"parallaxbg"}/>
-            <motion.img style={{y: y2}} src={bg3} alt={"bg3"} className={"parallaxbg"}/>
+            <motion.img style={{y: y1, minHeight: isMobile && 'unset'}} src={bg2} alt={"bg2"} className={"parallaxbg"}/>
+            <motion.img style={{y: y2, minHeight: isMobile && 'unset'}} src={bg3} alt={"bg3"} className={"parallaxbg"}/>
 
             <motion.img
                 initial={{scale: 2}}

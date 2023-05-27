@@ -1,15 +1,9 @@
 import Greeting from "./Geeting";
-import Avatar from "./Avatar";
+import ShortDescription from "./ShortDescription";
 import Scrollbar, {ScrollbarPlugin} from 'smooth-scrollbar';
 import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {setScrollY} from "../../redux/homeSliderSlice";
-
-
-type Delta = {
-    x: number,
-    y: number,
-};
 
 type Momentum = {
     x: number,
@@ -45,7 +39,7 @@ export default function LandingPage() {
 
             <div className={"LandingPage"}>
                 <Greeting/>
-                <Avatar/>
+                <ShortDescription/>
             </div>
     )
 }
