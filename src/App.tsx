@@ -1,13 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from "./pages/Home";
+import LandingPage from "./pages/LandingPage";
 import './App.css';
+import './Global.scss'
 import scrollDetector from 'scroll-detector';
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <LandingPage/>
     </div>
   );
 }

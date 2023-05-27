@@ -1,0 +1,128 @@
+@import "../../Init";
+
+body {
+  overflow: hidden;
+}
+
+.App {
+
+}
+
+.LandingPage {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  font-family: 'Montserrat';
+
+  .GreetingPage {
+    min-height: 100vh;
+    position: relative;;
+    pointer-events: none;
+
+
+    .greetingText {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      z-index: -1;
+      overflow-x: hidden;
+
+      .textContainer {
+        margin-top: 200px;
+        max-width: 1000px;
+        @include media-down(lg) {
+          max-width: 90vw;
+          font-size: 0.5em;
+        }
+      }
+
+      .title {
+        font-size: 1.5em;
+        color: white;
+        width: fit-content;
+        pointer-events: auto;
+      }
+
+      .name {
+        font-family: 'Miedinger-Bold';
+        text-transform: uppercase;
+        font-size: 4em;
+        color: white;
+        pointer-events: auto;
+      }
+    }
+
+    .parallaxbg {
+      position: absolute;
+      min-width: 100vw;
+      min-height: 100vh;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      z-index: -1;
+      transition: transform 0.1s linear;
+
+
+      &:first-child {
+        position: relative;
+      }
+    }
+  }
+
+  .Avatar {
+    background: rgb(24, 16, 63);
+    min-height: 120vh;
+    display: flex;
+    flex-direction: column;
+
+    .avatarContainer {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5em;
+      height: 100%;
+
+      .avatar {
+        width: 300px;
+      }
+    }
+
+    .textContainer {
+      color: white;
+      position: relative;
+
+      .textContent {
+        z-index: 1;
+      }
+
+      .IconsContainer {
+        .Icon {
+          z-index: 0;
+          &:first-child {
+            position: absolute;
+            top: -250px;
+            left: -15px;
+          }
+
+          &:nth-child(2) {
+            position: absolute;
+            top: -50px;
+            right: -200px;
+          }
+
+          &:nth-child(3) {
+            position: absolute;
+            bottom: -200px;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}

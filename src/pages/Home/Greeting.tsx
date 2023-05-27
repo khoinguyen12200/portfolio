@@ -1,5 +1,6 @@
 import Avatar from '../../assets/images/my_avatar.png';
 import useStateSlide from "../../hooks/useStateSlide";
+import {AiFillDatabase} from "react-icons/ai";
 
 export const GREETING_ID = "GREETING";
 

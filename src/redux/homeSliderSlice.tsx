@@ -5,14 +5,16 @@ export interface homeSliderInterface {
     activeSlide: string,
     isLoading: boolean,
     deActiveSlide: string,
-    blackHoleMode: boolean
+    blackHoleMode: boolean,
+    scrollY: number
 }
 
 const initialState: homeSliderInterface = {
     activeSlide: '',
     isLoading: false,
     deActiveSlide: '',
-    blackHoleMode: true
+    blackHoleMode: true,
+    scrollY: 0
 };
 
 const moveToSlide = createAsyncThunk(
@@ -49,6 +51,9 @@ export const homeSliderSlice = createSlice({
         },
         setBlackHoleMode: (state, action: PayloadAction<boolean>) => {
             state.blackHoleMode = action.payload;
+        },
+        setScrollY: (state, action: PayloadAction<number>) => {
+            state.scrollY = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -58,6 +63,6 @@ export const homeSliderSlice = createSlice({
     }
 });
 
-export const {setActiveSlide, setDeActiveSlide, setLoading, setBlackHoleMode} = homeSliderSlice.actions;
+export const {setActiveSlide, setDeActiveSlide, setLoading, setBlackHoleMode, setScrollY} = homeSliderSlice.actions;
 export {moveToSlide};
 export default homeSliderSlice.reducer;
