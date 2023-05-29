@@ -4,25 +4,44 @@ export default function useIsMobile() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        //check from window
-        function checkMobile() {
-            if (window.innerWidth < 768) {
-                setIsMobile(true);
-            } else {
-                setIsMobile(false);
-            }
-        }
 
-        //on resize
         window.addEventListener('resize', checkMobile);
-
-        //on load
         checkMobile();
 
         return () => {
             window.removeEventListener('resize', checkMobile);
         }
     },[])
+
+    function checkMobile() {
+        const isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+            },
+            any: function() {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+
+        if(isMobile.any()) {
+            setIsMobile(true);
+        } else {
+            setIsMobile(false);
+        }
+    }
+
 
     return [isMobile];
 }

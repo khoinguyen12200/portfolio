@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {MotionValue} from "framer-motion";
 
 
 export interface homeSliderInterface {
@@ -6,7 +7,8 @@ export interface homeSliderInterface {
     isLoading: boolean,
     deActiveSlide: string,
     blackHoleMode: boolean,
-    scrollY: number
+    scrollY: number,
+    myHelpYProgress: number
 }
 
 const initialState: homeSliderInterface = {
@@ -14,7 +16,8 @@ const initialState: homeSliderInterface = {
     isLoading: false,
     deActiveSlide: '',
     blackHoleMode: true,
-    scrollY: 0
+    scrollY: 0,
+    myHelpYProgress: 0
 };
 
 const moveToSlide = createAsyncThunk(
@@ -54,6 +57,9 @@ export const homeSliderSlice = createSlice({
         },
         setScrollY: (state, action: PayloadAction<number>) => {
             state.scrollY = action.payload;
+        },
+        setMyHelpYProgress: (state, action: PayloadAction<number>) => {
+            state.myHelpYProgress = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -63,6 +69,6 @@ export const homeSliderSlice = createSlice({
     }
 });
 
-export const {setActiveSlide, setDeActiveSlide, setLoading, setBlackHoleMode, setScrollY} = homeSliderSlice.actions;
+export const {setActiveSlide, setDeActiveSlide, setLoading, setBlackHoleMode, setScrollY, setMyHelpYProgress} = homeSliderSlice.actions;
 export {moveToSlide};
 export default homeSliderSlice.reducer;
