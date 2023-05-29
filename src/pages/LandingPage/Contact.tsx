@@ -13,7 +13,7 @@ export default function Contact() {
     const contactRef = useRef(null);
     const progress = useLandingScroll({target: contactRef, startProgress: true});
 
-    const scaleY = useTransform(progress, [0, 0.8], [0, 1]);
+    const scaleY = useTransform(progress, [-0.5, 0.2], [1, 0]);
     const [isActive, setIsActive] = useState(false);
     useEffect(() => {
         const unsub = progress.on('change', (value) => {
