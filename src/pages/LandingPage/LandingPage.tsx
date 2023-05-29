@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {setScrollY} from "../../redux/homeSliderSlice";
 import MyHelp, {MyHelpContent} from "./MyHelp";
 import {ScrollDirectionInterface} from "../../hooks/useScrollDirection";
+import Contact from "./Contact";
 
 type Momentum = {
     x: number,
@@ -57,6 +58,7 @@ export default function LandingPage() {
                 <Greeting/>
                 <ShortDescription/>
                 <MyHelp/>
+                <Contact/>
             </div>
             <MyHelpContent/>
         </>

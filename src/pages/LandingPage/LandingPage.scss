@@ -208,6 +208,70 @@ body {
     width: 100vw;
     height: 500vh;
   }
+
+  .ContactSection {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .sectionBg {
+      position: absolute;
+      bottom: 100%;
+      width: 100vw;
+      z-index: 0;
+      transform-origin: bottom;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .ContactMainSpace {
+      color: white;
+      width: 1200px;
+      z-index: 2;
+
+      .ContactText {
+        margin-bottom: 5em;
+        h1 {
+          font-size: 2.5em;
+        }
+
+        p {
+          font-size: 1.5em;
+        }
+      }
+
+      .ContactList {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .ContactItem {
+          display: flex;
+          align-items: center;
+          gap: 1em;
+          font-size: 1.7em;
+
+          .ContactIcon {
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          a {
+            color: white;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+
+  }
 }
 
 .ContentWrapper {

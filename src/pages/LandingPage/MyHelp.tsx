@@ -24,12 +24,15 @@ export default function MyHelp() {
     const dispatch = useAppDispatch();
     const scrollYProgressEnd = useLandingScroll({target: myHelpRef, startProgress: false});
     const scaleY = useTransform(scrollYProgressEnd, [-0.3, 0], [1.5, 0]);
-    console.log(window.innerWidth, window.innerHeight)
 
     useEffect(() => {
-        scrollYProgressEnd.on('change', (value) => {
+        const unsub = scrollYProgressEnd.on('change', (value) => {
             dispatch(setMyHelpYProgress(value))
         })
+
+        return () => {
+            unsub();
+        }
     }, [])
 
     return (
@@ -53,7 +56,10 @@ export function MyHelpContent() {
     const myHelpYProgress = useAppSelector(state => state.homeSlider.myHelpYProgress)
     const yProgress = useHelpProgressMotion();
     const y = useTransform(yProgress, [-0.3, 0], [window.innerHeight, 0]);
-    const isShow = useMemo(() => myHelpYProgress > -0, [myHelpYProgress]);
+    const isShow = useMemo(() => myHelpYProgress > -0 && myHelpYProgress < 0.85, [myHelpYProgress]);
+    const yOut = useMemo(() => {
+        return myHelpYProgress > 0.85 ? -300 : 300;
+    }, [myHelpYProgress]);
 
     const ContentContainerRef = useRef(null);
     return (
@@ -61,7 +67,7 @@ export function MyHelpContent() {
             style={{y: y}}
             className={"ContentWrapper"}>
             <motion.div
-                animate={isShow ? {y: 0, opacity: 1} : {y: 200, opacity: 0}}
+                animate={isShow ? {y: 0, opacity: 1} : {y: yOut, opacity: 0}}
                 transition={{type: 'spring', mass: 0.5, stiffness: 50}}
                 className={"ContentContainer"}>
                 <ProgressBar/>
