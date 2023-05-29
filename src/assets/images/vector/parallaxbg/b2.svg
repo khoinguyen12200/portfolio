@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="BACKGROUND" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: .8;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="215.53" cy="308.77" r="64.55"/>
+</svg>

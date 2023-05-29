@@ -1,8 +1,8 @@
-import bg1 from '../../assets/images/vector/parallaxbg/bg1.svg'
-import bg2 from '../../assets/images/vector/parallaxbg/bg2.svg'
-import bg3 from '../../assets/images/vector/parallaxbg/bg3.svg'
-import bg4 from '../../assets/images/vector/parallaxbg/bg4.svg'
-import bg5 from '../../assets/images/vector/parallaxbg/bg5.svg'
+import bg1 from '../../assets/images/vector/parallaxbg/b1.svg'
+import bg2 from '../../assets/images/vector/parallaxbg/b2.svg'
+import bg3 from '../../assets/images/vector/parallaxbg/b3.svg'
+import bg4 from '../../assets/images/vector/parallaxbg/b4.svg'
+import bg5 from '../../assets/images/vector/parallaxbg/b5.svg'
 import {useEffect, useRef, useState} from "react";
 import useParallax from "../../hooks/useParallax";
 import {motion, MotionValue, useScroll, useTransform} from "framer-motion";

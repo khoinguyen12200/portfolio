@@ -37,13 +37,13 @@ export default function MyHelp() {
 
     return (
         <>
-            <div ref={myHelpRef} className={"MyHelp h-screen w-screen bg-indigo-950"}>
+            <div ref={myHelpRef} className={"MyHelp h-screen w-screen bg-slate-800"}>
                 <motion.div
                     style={{scaleY: scaleY}}
                     className={"w-screen absolute origin-top-left"}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                        <path fill="#18103F" fill-opacity="1"
+                        <path fill="#1f212e" fill-opacity="1"
                               d="M0,256L120,250.7C240,245,480,235,720,240C960,245,1200,267,1320,277.3L1440,288L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
                     </svg>
                 </motion.div>

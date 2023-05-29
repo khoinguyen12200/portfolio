@@ -49,17 +49,21 @@ body {
 
       .title {
         font-size: 1.5em;
-        color: white;
+        color: #1a1e21;
         width: fit-content;
         pointer-events: auto;
       }
 
       .name {
-        font-family: 'Miedinger-Bold';
+        font-family: 'Montserrat-Bold';
         text-transform: uppercase;
-        font-size: 4em;
-        color: white;
+        font-size: 5em;
+        color: #1a1e21;
         pointer-events: auto;
+
+        @include media-down(xxxl) {
+          font-size: 3.5em;
+        }
       }
     }
 
@@ -81,7 +85,7 @@ body {
   }
 
   .ShortDescription {
-    background: rgb(24, 16, 63);
+    background: #1f212e;
     display: flex;
     flex-direction: column;
     height: 120vh;
