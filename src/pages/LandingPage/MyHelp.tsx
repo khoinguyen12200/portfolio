@@ -54,6 +54,8 @@ export function MyHelpContent() {
     const yProgress = useHelpProgressMotion();
     const y = useTransform(yProgress, [-0.3, 0], [window.innerHeight, 0]);
     const isShow = useMemo(() => myHelpYProgress > -0, [myHelpYProgress]);
+
+    const ContentContainerRef = useRef(null);
     return (
         <motion.div
             style={{y: y}}
@@ -63,7 +65,7 @@ export function MyHelpContent() {
                 transition={{type: 'spring', mass: 0.5, stiffness: 50}}
                 className={"ContentContainer"}>
                 <ProgressBar/>
-                <div className={"ContentHelp"}>
+                <div ref={ContentContainerRef} className={"ContentHelp"}>
                     <UiUxDesign/>
                     <BackEndBuild/>
                     <Solution/>
@@ -207,8 +209,8 @@ function PhoneScreen({image, index}: any) {
     const stepZ = 100;
 
 
-    const x = useTransform(progress, [0.1, 0.6, 1], [0,0, XDefault + stepX * index]);
-    const z = useTransform(progress, [0.1,0.6,  1], [0,0, ZDefault + stepZ * index]);
+    const x = useTransform(progress, [0.1, 0.4, 1], [0,0, XDefault + stepX * index]);
+    const z = useTransform(progress, [0.1,0.4,  1], [0,0, ZDefault + stepZ * index]);
     const rotateY = useTransform(progress, [0.1, 0.6], [0, 45]);
 
     return(
