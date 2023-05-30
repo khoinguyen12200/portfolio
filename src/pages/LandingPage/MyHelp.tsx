@@ -23,7 +23,8 @@ export default function MyHelp() {
     const myHelpRef = useRef(null);
     const dispatch = useAppDispatch();
     const scrollYProgressEnd = useLandingScroll({target: myHelpRef, startProgress: false});
-    const scaleY = useTransform(scrollYProgressEnd, [-0.3, 0], [1.5, 0]);
+    const yProgressStart = useLandingScroll({target: myHelpRef, startProgress: true});
+    const scaleY = useTransform(yProgressStart, [-0.5, 0.2], [1, 0]);
 
     useEffect(() => {
         const unsub = scrollYProgressEnd.on('change', (value) => {
@@ -38,15 +39,17 @@ export default function MyHelp() {
     return (
         <>
             <div ref={myHelpRef} className={"MyHelp h-screen w-screen bg-slate-800"}>
-                <motion.div
-                    style={{scaleY: scaleY}}
-                    className={"w-screen absolute origin-top-left"}
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                        <path fill="#1f212e" fill-opacity="1"
-                              d="M0,256L120,250.7C240,245,480,235,720,240C960,245,1200,267,1320,277.3L1440,288L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
-                    </svg>
-                </motion.div>
+                <div className={"waveContainer"}>
+                    <motion.div
+                        style={{scaleY}}
+                        className={"sectionBg"}>
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 481">
+                            <path className="cls-1"
+                                  fill={"#1E293B"}
+                                  d="M1366,489.83c0,188.97-1366,188.97-1366,0S329.51,11,683.56,11s682.44,289.86,682.44,478.83Z"/>
+                        </svg>
+                    </motion.div>
+                </div>
             </div>
         </>
     )
@@ -67,6 +70,7 @@ export function MyHelpContent() {
             style={{y: y}}
             className={"ContentWrapper"}>
             <motion.div
+                initial={{y: yOut, opacity: 0}}
                 animate={isShow ? {y: 0, opacity: 1} : {y: yOut, opacity: 0}}
                 transition={{type: 'spring', mass: 0.5, stiffness: 50}}
                 className={"ContentContainer"}>
@@ -167,11 +171,11 @@ function useActiveHelp(index: number) {
 
 function UiUxDesign() {
     const isActive = useActiveHelp(1);
-    const progress = useHelpStepProgress(1);
+    const isNextActive = useActiveHelp(2);
 
     return (
         <motion.div
-            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: 100}}
+            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isNextActive ? -200 : 200}}
             transition={{type: 'spring', mass: 0.5, stiffness: 50}}
             className={"HelpItem"}>
             <div className={"HelpContent"}>
@@ -208,15 +212,15 @@ function UiUxDesign() {
 
 function PhoneScreen({image, index}: any) {
     const progress = useHelpStepProgress(1);
-    const XDefault = -200;
-    const stepX = 100;
+    const XDefault = -100;
+    const stepX = 50;
 
-    const ZDefault = -200;
-    const stepZ = 100;
+    const ZDefault = -100;
+    const stepZ = 50;
 
 
-    const x = useTransform(progress, [0.1, 0.4, 1], [0,0, XDefault + stepX * index]);
-    const z = useTransform(progress, [0.1,0.4,  1], [0,0, ZDefault + stepZ * index]);
+    const x = useTransform(progress, [0.1, 0.4, 0.8], [0,0, XDefault + stepX * index]);
+    const z = useTransform(progress, [0.1,0.4,  0.8], [0,0, ZDefault + stepZ * index]);
     const rotateY = useTransform(progress, [0.1, 0.6], [0, 45]);
 
     return(
@@ -231,10 +235,11 @@ function PhoneScreen({image, index}: any) {
 
 function BackEndBuild() {
     const isActive = useActiveHelp(2);
+    const isNextActive = useActiveHelp(3);
 
     return (
         <motion.div
-            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: 100}}
+            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isNextActive ? -200 : 200}}
             transition={{type: 'spring', mass: 0.5, stiffness: 50}}
             className={"HelpItem"}>
             <div className={"HelpContent"}>
@@ -271,7 +276,7 @@ function BackEndScreen({image, index}: any) {
     const progress = useHelpStepProgress(2);
     const yDefault = 0;
     const stepy = -100;
-    const y = useTransform(progress, [1,0], [0, yDefault + stepy * index]);
+    const y = useTransform(progress, [0.8,0], [0, yDefault + stepy * index]);
     const opacity = useTransform(y, [yDefault + stepy * index, 0], [0, 1])
 
     return(
@@ -285,10 +290,11 @@ function BackEndScreen({image, index}: any) {
 
 function Solution() {
     const isActive = useActiveHelp(3);
+    const isPrevActive = useActiveHelp(2);
 
     return (
         <motion.div
-            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: 100}}
+            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isPrevActive ? 200 : -200}}
             transition={{type: 'spring', mass: 0.5, stiffness: 50}}
             className={"HelpItem"}>
             <div className={"HelpContent"}>
@@ -326,7 +332,7 @@ function SolutionScreen({image, index}: any) {
     const yDefault = 0;
     const stepy = -100;
 
-    const y = useTransform(progress, [1,0], [0, yDefault + stepy * index]);
+    const y = useTransform(progress, [0.8,0], [0, yDefault + stepy * index]);
     const opacity = useTransform(y, [yDefault + stepy * index, 0], [0, 1])
 
 

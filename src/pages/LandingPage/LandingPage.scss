@@ -21,6 +21,50 @@ body {
     position: relative;
     pointer-events: none;
 
+    .HelloPage {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background: #1f212e;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10000;
+
+      .waveContainer {
+        position: relative;
+
+        .sectionBg {
+          position: absolute;
+          bottom: 100%;
+          left: 0;
+          width: 100vw;
+          transform-origin: bottom;
+        }
+      }
+
+      .Content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 100%;
+        height: 100%;
+      }
+
+      .botWaveContainer {
+        position: relative;
+
+        .sectionBg {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100vw;
+
+        }
+      }
+    }
+
 
     .greetingText {
       position: absolute;
@@ -88,7 +132,7 @@ body {
     background: #1f212e;
     display: flex;
     flex-direction: column;
-    height: 120vh;
+    height: 140vh;
     overflow-x: hidden;
 
     @include media-down(lg) {
@@ -211,6 +255,19 @@ body {
     position: relative;
     width: 100vw;
     height: 500vh;
+
+    .waveContainer {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100vw;
+      z-index: 1000;
+
+      .sectionBg {
+        width: 100%;
+        transform-origin: bottom;
+      }
+    }
   }
 
   .ContactSection {

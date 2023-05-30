@@ -113,6 +113,17 @@ function TextContainer() {
 
     return (
         <div ref={refText} className={"textContainer"}>
+            <div className={"waveContainer"}>
+                <motion.div
+                    className={"sectionBg"}>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 481">
+                        <path className="cls-1"
+                              fill={"#1f212e"}
+                              d="M1366,489.83c0,188.97-1366,188.97-1366,0S329.51,11,683.56,11s682.44,289.86,682.44,478.83Z"/>
+                    </svg>
+                </motion.div>
+            </div>
+
             <motion.div
                 animate={isInViewText ? {opacity: 1} : {opacity: 0, y: 200}}
                 transition={{type: 'spring', mass: 0.5, stiffness: 50}}
