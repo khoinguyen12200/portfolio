@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useRef, useState} from "react";
-import {motion, useMotionValue, useTransform} from "framer-motion";
+import {motion, useMotionValue, useSpring, useTransform} from "framer-motion";
 import useLandingScroll from "../../hooks/useLandingScroll";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {setMyHelpYProgress} from "../../redux/homeSliderSlice";
@@ -175,12 +175,12 @@ function UiUxDesign() {
 
     return (
         <motion.div
-            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isNextActive ? -200 : 200}}
+            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isNextActive ? -400 : 400}}
             transition={{type: 'spring', mass: 0.5, stiffness: 50}}
             className={"HelpItem"}>
             <div className={"HelpContent"}>
                 <h2 className={"subtitle"}>
-                    UI/UX Design
+                    UI/UX Interactive
                 </h2>
                 <div className={"desc"}>
                     <div>
@@ -212,20 +212,23 @@ function UiUxDesign() {
 
 function PhoneScreen({image, index}: any) {
     const progress = useHelpStepProgress(1);
-    const XDefault = -100;
-    const stepX = 50;
+    const XDefault = -200;
+    const stepX = 100;
 
-    const ZDefault = -100;
-    const stepZ = 50;
+    const ZDefault = -200;
+    const stepZ = 100;
 
 
-    const x = useTransform(progress, [0.1, 0.4, 0.8], [0,0, XDefault + stepX * index]);
-    const z = useTransform(progress, [0.1,0.4,  0.8], [0,0, ZDefault + stepZ * index]);
-    const rotateY = useTransform(progress, [0.1, 0.6], [0, 45]);
+    const x = useTransform(progress, [0.1, 0.9], [0, XDefault + stepX * index]);
+    const z = useTransform(progress, [0.1,  0.9], [0, ZDefault + stepZ * index]);
+    const xSlower = useSpring(x, {stiffness: 30, damping: 10});
+    const zSlower = useSpring(z, {stiffness: 30, damping: 10});
+    const rotateY = useTransform(progress, [0.1, 0.9], [0, 75]);
+    const rotateYSlower = useSpring(rotateY, {stiffness: 30, damping: 10});
 
     return(
         <motion.img
-            style={{z, x, rotateY: rotateY}}
+            style={{z: zSlower, x: xSlower, rotateY: rotateYSlower}}
             src={image}
             className={"webApp"}
         />
@@ -239,7 +242,7 @@ function BackEndBuild() {
 
     return (
         <motion.div
-            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isNextActive ? -200 : 200}}
+            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isNextActive ? -400 : 400}}
             transition={{type: 'spring', mass: 0.5, stiffness: 50}}
             className={"HelpItem"}>
             <div className={"HelpContent"}>
@@ -276,7 +279,7 @@ function BackEndScreen({image, index}: any) {
     const progress = useHelpStepProgress(2);
     const yDefault = 0;
     const stepy = -100;
-    const y = useTransform(progress, [0.8,0], [0, yDefault + stepy * index]);
+    const y = useTransform(progress, [0.9,0], [0, yDefault + stepy * index]);
     const opacity = useTransform(y, [yDefault + stepy * index, 0], [0, 1])
 
     return(
@@ -294,7 +297,7 @@ function Solution() {
 
     return (
         <motion.div
-            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isPrevActive ? 200 : -200}}
+            animate={isActive ? {opacity: 1, y: 0} : {opacity: 0, y: isPrevActive ? 400 : -400}}
             transition={{type: 'spring', mass: 0.5, stiffness: 50}}
             className={"HelpItem"}>
             <div className={"HelpContent"}>
@@ -332,7 +335,7 @@ function SolutionScreen({image, index}: any) {
     const yDefault = 0;
     const stepy = -100;
 
-    const y = useTransform(progress, [0.8,0], [0, yDefault + stepy * index]);
+    const y = useTransform(progress, [0.9,0], [0, yDefault + stepy * index]);
     const opacity = useTransform(y, [yDefault + stepy * index, 0], [0, 1])
 
 
