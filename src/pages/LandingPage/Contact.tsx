@@ -1,8 +1,3 @@
-import {BsEnvelope, BsLinkedin, BsTelephone, BsTelephoneFill} from "react-icons/bs";
-import {MdEmail} from "react-icons/md";
-import {GrLinkedinOption} from "react-icons/gr";
-import {HiOutlineMail} from "react-icons/hi";
-import {AiOutlinePhone} from "react-icons/ai";
 import {GoPrimitiveDot} from "react-icons/go";
 import {useEffect, useRef, useState} from "react";
 import useLandingScroll from "../../hooks/useLandingScroll";

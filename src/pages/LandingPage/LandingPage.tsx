@@ -7,6 +7,7 @@ import {setScrollY} from "../../redux/homeSliderSlice";
 import MyHelp, {MyHelpContent} from "./MyHelp";
 import {ScrollDirectionInterface} from "../../hooks/useScrollDirection";
 import Contact from "./Contact";
+import Experience from "./Experience";
 
 type Momentum = {
     x: number,
@@ -58,6 +59,7 @@ export default function LandingPage() {
                 <Greeting/>
                 <ShortDescription/>
                 <MyHelp/>
+                <Experience/>
                 <Contact/>
             </div>
             <MyHelpContent/>

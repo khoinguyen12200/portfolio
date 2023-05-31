@@ -136,7 +136,7 @@ function useHelpStepsProgress() {
         progress.set(myHelpYProgress);
     }, [myHelpYProgress])
 
-    const realProgress = useTransform(progress, [0.15, 1], [0, 1]);
+    const realProgress = useTransform(progress, [0.05, 1], [0, 1]);
 
     return realProgress;
 }
@@ -212,18 +212,18 @@ function UiUxDesign() {
 
 function PhoneScreen({image, index}: any) {
     const progress = useHelpStepProgress(1);
-    const XDefault = -200;
-    const stepX = 100;
+    const XDefault = -140;
+    const stepX = 70;
 
-    const ZDefault = -200;
-    const stepZ = 100;
+    const ZDefault = -140;
+    const stepZ = 70;
 
 
-    const x = useTransform(progress, [0.1, 0.9], [0, XDefault + stepX * index]);
-    const z = useTransform(progress, [0.1,  0.9], [0, ZDefault + stepZ * index]);
+    const x = useTransform(progress, [0.3, 0.9], [0, XDefault + stepX * index]);
+    const z = useTransform(progress, [0.3,  0.9], [0, ZDefault + stepZ * index]);
     const xSlower = useSpring(x, {stiffness: 30, damping: 10});
     const zSlower = useSpring(z, {stiffness: 30, damping: 10});
-    const rotateY = useTransform(progress, [0.1, 0.9], [0, 75]);
+    const rotateY = useTransform(progress, [0, 0.9], [0, 50]);
     const rotateYSlower = useSpring(rotateY, {stiffness: 30, damping: 10});
 
     return(

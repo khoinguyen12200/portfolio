@@ -270,6 +270,93 @@ body {
     }
   }
 
+  .ExperienceSection {
+    overflow-x: hidden;
+    height: 190vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+    .ExpContent {
+      margin: 0 auto;
+      margin-top: 10em;
+      width: 700px;
+      color: white;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      @include media-down(lg) {
+        width: 90vw;
+      }
+
+      .ExpText {
+
+
+        h1 {
+          font-size: 2em;
+          font-family: 'Montserrat-Bold';
+        }
+      }
+
+      .SkillContent {
+        margin-top: 5em;
+
+        .SkillTitle {
+          font-size: 1em;
+          margin-bottom: 1em;
+          font-family: 'Montserrat-Bold';
+          position: relative;
+        }
+
+        .SkillList {
+          margin-bottom: 3em;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: flex-start;
+          gap: 1em;
+
+          .SkillItem {
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+
+            @include media-down(lg) {
+              font-size: 0.8em;
+            }
+
+            .SkillIcon {
+              .Icon {
+                height: 30px;
+              }
+            }
+          }
+        }
+
+
+      }
+
+    }
+
+    .sectionBg {
+      position: absolute;
+      bottom: 100%;
+      width: 100vw;
+      z-index: 0;
+      transform-origin: bottom;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
   .ContactSection {
     height: 100vh;
     display: flex;
