@@ -13,8 +13,6 @@ export default function Experience() {
     const progress = useLandingScroll({target: ExperienceRef, startProgress: true});
 
     const scaleY = useTransform(progress, [-0.5, 0.2], [1, 0]);
-    const left = useTransform(progress, [0.2, 0.3], [window.innerWidth, 0]);
-    const leftWithSpring = useSpring(left, {stiffness: 100, damping: 20})
     const [isActive, setIsActive] = useState(false);
     useEffect(() => {
         const unsub = progress.on('change', (value) => {
@@ -33,6 +31,9 @@ export default function Experience() {
         }
     }, [ExperienceRef.current])
 
+    const width = useTransform(progress, [0.2, 0.3], [0, window.innerWidth]);
+    const widthSpring = useSpring(width, {stiffness: 100, damping: 20})
+
 
     return (
         <div ref={ExperienceRef} className={"ExperienceSection bg-gray-700"}>
@@ -46,7 +47,7 @@ export default function Experience() {
                 </svg>
             </motion.div>
             <motion.div
-                style={{left: leftWithSpring}}
+                style={{width: widthSpring}}
                 className={"secondBg bg-slate-950"}
             />
             <motion.div
