@@ -75,6 +75,16 @@ export default function Contact() {
                             </a>
                         </div>
                     </div>
+                    <div className={"ContactItem"}>
+                        <div className={"ContactIcon"}>
+                            <GoPrimitiveDot/>
+                        </div>
+                        <div className={"ContactInfo"}>
+                            <a href={"https://resume.io/r/odUvEOQYz"}>
+                                Resume
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </motion.div>
         </div>
