@@ -271,7 +271,6 @@ body {
   }
 
   .ExperienceSection {
-    overflow-x: hidden;
     height: 190vh;
     display: flex;
     flex-direction: column;
@@ -354,6 +353,14 @@ body {
         width: 100%;
         height: 100%;
       }
+    }
+
+    .secondBg {
+      width: 100vw;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
     }
   }
 

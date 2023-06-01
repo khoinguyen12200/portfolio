@@ -19,28 +19,22 @@ export default function Greeting() {
             setRefHeight(ref.current.clientHeight)
         }
     }, [ref])
-    const y1 = useTransform(scrollYProgress, [0, 1], [0, refHeight / 1.5]);
-    const y2 = useTransform(scrollYProgress, [0, 1], [0, refHeight / 2.5]);
-    const y3 = useTransform(scrollYProgress, [0, 1], [0, refHeight / 2.5]);
+    const y1 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : refHeight / 1.5]);
+    const y2 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 :  refHeight / 2.5]);
+    const y3 = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 :  refHeight / 2.5]);
 
     return (
         <div ref={ref} className={"GreetingPage"}>
             <motion.embed src={bg1} className={"parallaxbg"}/>
-            <motion.img style={{y: isMobile ? 0 : y1, minHeight: isMobile && 'unset'}} src={bg2} alt={"bg2"}
+            <motion.img style={isMobile ? {minHeight:'unset'} : {y: y1}} src={bg2} alt={"bg2"}
                         className={"parallaxbg"}/>
             <motion.img
-                initial={{scale: 2}}
-                animate={{scale: 1}}
-                transition={{duration: 2}}
-                style={{y: y2}} src={bg3} alt={"bg3"} className={"parallaxbg"}/>
+                style={{y:y2}} src={bg3} alt={"bg3"} className={"parallaxbg"}/>
 
             <motion.img
-                initial={{scale: 2}}
-                animate={{scale: 1}}
-                transition={{duration: 2}}
-                style={{y: isMobile ? 0 : y3}} src={bg4} alt={"bg4"} className={"parallaxbg"}/>
+                style={{y: y3}} src={bg4} alt={"bg4"} className={"parallaxbg"}/>
             <motion.div
-                style={{y: isMobile ? 0 : y1}}
+                style={{y:y1}}
                 className={"greetingText"}>
                 <motion.div
                     className={"textContainer"}>
@@ -52,12 +46,7 @@ export default function Greeting() {
                     </h1>
                 </motion.div>
             </motion.div>
-            <motion.img
-                initial={{scale: 2}}
-                animate={{scale: 1}}
-                transition={{duration: 2}}
-                style={{}} src={bg5} alt={"bg5"} className={"parallaxbg"}/>
-
+            <motion.img src={bg5} alt={"bg5"} className={"parallaxbg"}/>
             <HelloPage/>
         </div>
     )

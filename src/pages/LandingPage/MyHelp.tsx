@@ -212,11 +212,11 @@ function UiUxDesign() {
 
 function PhoneScreen({image, index}: any) {
     const progress = useHelpStepProgress(1);
-    const XDefault = -140;
-    const stepX = 70;
+    const XDefault = -200;
+    const stepX = 100;
 
-    const ZDefault = -140;
-    const stepZ = 70;
+    const ZDefault = -200;
+    const stepZ = 100;
 
 
     const x = useTransform(progress, [0.3, 0.9], [0, XDefault + stepX * index]);
