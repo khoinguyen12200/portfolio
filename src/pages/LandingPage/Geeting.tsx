@@ -128,7 +128,7 @@ function HelloPage() {
             >
                 <motion.div
                     animate={{scaleY: isShow ? 1 : 0}}
-                    transition={{duration: 0.7, delay: 0.5}}
+                    transition={{duration: 0.7, delay: 0.2}}
                     style={{transformOrigin: 'top'}}
                     className={"sectionBg"}>
                     <svg style={{rotate: '180deg'}} id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 481">

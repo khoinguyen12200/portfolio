@@ -1,4 +1,3 @@
-import {GoPrimitiveDot} from "react-icons/go";
 import useLandingScroll from "../../hooks/useLandingScroll";
 import {useSpring, useTransform} from "framer-motion";
 import useStateSlide from "../../hooks/useStateSlide";
