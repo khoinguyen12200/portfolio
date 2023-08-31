@@ -80,7 +80,7 @@ export default function Contact() {
                             <GoPrimitiveDot/>
                         </div>
                         <div className={"ContactInfo"}>
-                            <a target={"_blank"} href={"/khoi-fullstack.pdf"}>
+                            <a target={"_blank"} href={"/resume.pdf"}>
                                 Resume
                             </a>
                         </div>
