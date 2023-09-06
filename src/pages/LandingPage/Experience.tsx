@@ -30,25 +30,18 @@ export default function Experience() {
         }
     }, [ExperienceRef.current])
 
-    const width = useTransform(progress, [0.2, 0.3], [0, window.innerWidth]);
-    const widthSpring = useSpring(width, {stiffness: 100, damping: 20})
-
 
     return (
-        <div ref={ExperienceRef} className={"ExperienceSection bg-gray-700"}>
+        <div ref={ExperienceRef} className={"ExperienceSection bg-slate-900"}>
             <motion.div
                 className={"sectionBg"}
                 style={{scaleY}}>
                 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 481">
                     <path className="cls-1"
-                          fill={"#374151"}
+                          fill={"#0E172A"}
                           d="M1366,489.83c0,188.97-1366,188.97-1366,0S329.51,11,683.56,11s682.44,289.86,682.44,478.83Z"/>
                 </svg>
             </motion.div>
-            <motion.div
-                style={{width: widthSpring}}
-                className={"secondBg bg-slate-950"}
-            />
             <motion.div
                 animate={isActive ? {y: 0, opacity: 1} : {y: 200, opacity: 0}}
                 transition={{ type: "spring", stiffness: 100, damping: 20}}

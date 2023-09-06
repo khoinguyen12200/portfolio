@@ -219,11 +219,11 @@ function PhoneScreen({image, index}: any) {
     const stepZ = 100;
 
 
-    const x = useTransform(progress, [0.3, 0.9], [0, XDefault + stepX * index]);
-    const z = useTransform(progress, [0.3,  0.9], [0, ZDefault + stepZ * index]);
+    const x = useTransform(progress, [0.2, 0.7], [0, XDefault + stepX * index]);
+    const z = useTransform(progress, [0.2,  0.7], [0, ZDefault + stepZ * index]);
     const xSlower = useSpring(x, {stiffness: 30, damping: 10});
     const zSlower = useSpring(z, {stiffness: 30, damping: 10});
-    const rotateY = useTransform(progress, [0, 0.9], [0, 50]);
+    const rotateY = useTransform(progress, [0.2, 0.7], [0, 50]);
     const rotateYSlower = useSpring(rotateY, {stiffness: 30, damping: 10});
 
     return(

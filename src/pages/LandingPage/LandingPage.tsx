@@ -8,6 +8,7 @@ import MyHelp, {MyHelpContent} from "./MyHelp";
 import {ScrollDirectionInterface} from "../../hooks/useScrollDirection";
 import Contact from "./Contact";
 import Experience from "./Experience";
+import Projects from "./Projects";
 
 type Momentum = {
     x: number,
@@ -60,6 +61,7 @@ export default function LandingPage() {
                 <ShortDescription/>
                 <MyHelp/>
                 <Experience/>
+                <Projects/>
                 <Contact/>
             </div>
             <MyHelpContent/>
