@@ -61,7 +61,7 @@ export default function LandingPage() {
                 <ShortDescription/>
                 <MyHelp/>
                 <Experience/>
-                <Projects/>
+                {/*<Projects/>*/}
                 <Contact/>
             </div>
             <MyHelpContent/>
