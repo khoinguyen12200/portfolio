@@ -16,6 +16,8 @@ import mongodbIcon from '../../assets/images/mongodb.png';
 import nginxIcon from '../../assets/images/nginx.png';
 import mysqlIcon from '../../assets/images/mysql.png';
 import framerMotionIcon from '../../assets/images/framer.webp';
+import shopifyIcon from '../../assets/images/shopify.png';
+import remixJsIcon from '../../assets/images/remixjs.png';
 
 export interface SkillItemInterface {
     name: string;
@@ -79,6 +81,14 @@ export const BackEndSkills = [
     {
         name: 'MySQL',
         icon: mysqlIcon
+    },
+    {
+        name: 'Shopify',
+        icon: shopifyIcon
+    },
+    {
+        name: 'RemixJS',
+        icon: remixJsIcon
     }
 ]
 
